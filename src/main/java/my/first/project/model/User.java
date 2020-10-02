@@ -14,13 +14,12 @@ public class User {
 	}
 
 	public void setUser_ID(String user_ID) {
-		if (user_ID.length()<=12) {
+		if (user_ID.length() <= 12) {
 			this.user_ID = user_ID;
-		}else
-		{
+		} else {
 			this.user_ID = user_ID.substring(0, 11);
 		}
-		
+
 	}
 
 	public String getUser_Password() {
@@ -28,13 +27,11 @@ public class User {
 	}
 
 	public void setUser_Password(String user_Password) {
-		if (user_Password.length()<=32) {
+		if (user_Password.length() <= 32) {
 			this.user_Password = user_Password;
-		}else
-		{
+		} else {
 			this.user_Password = user_Password.substring(0, 31);
 		}
-		
 	}
 
 	public String getUser_Name() {
