@@ -1,16 +1,23 @@
-package my.first.project.service;
+package my.first.project.service.impl;
 
 import java.util.List;
 
-import my.first.project.model.User;
-import my.first.project.service.impl.UserService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
+import my.first.project.dao.UserDao;
+import my.first.project.model.User;
+import my.first.project.service.UserService;
+
+@Service
 public class IUserService implements UserService {
 
+	@Autowired
+	UserDao userDao;
+	
 	@Override
 	public void insertUser(User user) {
-		
-		
+		userDao.insertUser(user);
 	}
 
 	@Override

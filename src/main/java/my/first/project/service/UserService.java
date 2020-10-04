@@ -1,7 +1,4 @@
-package my.first.project.service.impl;
-
-
-
+package my.first.project.service;
 
 import java.util.List;
 

@@ -7,7 +7,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<form action="/controller/login" method="post">
+	<form action="/controller/create" method="GET">
 		<h1>Đăng nhập vào website</h1>
 		<div class="input-box">
 			<i></i> <input type="text" placeholder="Nhập username">

@@ -1,7 +1,4 @@
 package my.first.project.dao.impl;
-
-import java.io.Console;
-
 import javax.annotation.PostConstruct;
 import javax.sql.DataSource;
 
