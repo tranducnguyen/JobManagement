@@ -1,8 +1,9 @@
 package my.first.project.dao.impl;
 
+import java.io.Console;
+
 import javax.annotation.PostConstruct;
 import javax.sql.DataSource;
-
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.support.JdbcDaoSupport;
@@ -14,7 +15,7 @@ import my.first.project.model.User;
 public class IUserDao extends JdbcDaoSupport implements UserDao {
 	@Autowired
 	DataSource datasource;
-	
+
 	@PostConstruct
 	private void initialize() {
 		setDataSource(datasource);
@@ -22,9 +23,18 @@ public class IUserDao extends JdbcDaoSupport implements UserDao {
 	
 	@Override
 	public void insertUser(User user) {
-		String sql = "INSERT INTO USER "+"(USER_ID,USER_PASSWORD,USER_NAME) VALUES (?, ?, ?)";
-		getJdbcTemplate().update(sql, new Object[] {user.getUser_ID(),user.getUser_Password(),user.getUser_Name()});
+//		String sql = "INSERT INTO USER " + "(USER_ID,USER_PASSWORD,USER_NAME) VALUES (?, ?, ?)";
+//		getJdbcTemplate().update(sql, new Object[] { user.getUser_ID(), user.getUser_Password(), user.getUser_Name() });
+		String x = createUserID();
+		System.out.println(x);
+	}
+
+	private String createUserID() {
+		String sql ="SELECT COUNT(USER_ID) FROM USERS";
 		
+		int sl = getJdbcTemplate().update(sql);
+		String kq = String.format("000", sl);
+		return kq;
 	}
 
 	@Override

@@ -17,4 +17,9 @@ public class HomeController {
 		
 		return "home";
 	}
+	@RequestMapping(value ="/create", method = RequestMethod.GET)
+	public String createUser() {
+		
+		return "login";
+	}
 }
