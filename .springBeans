@@ -10,7 +10,6 @@
 		<config>src/main/java/my/first/project/SpringApp.java</config>
 	</configs>
 	<autoconfigs>
-		<config>java:my.first.project.controller.SpringApp</config>
 	</autoconfigs>
 	<configSets>
 	</configSets>

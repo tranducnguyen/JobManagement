@@ -2,8 +2,10 @@ package my.first.project.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.servlet.ModelAndView;
 
 import my.first.project.model.User;
 import my.first.project.service.UserService;
@@ -14,12 +16,13 @@ public class UserController {
 	UserService userService;	
 	
 	@RequestMapping(value ="/create", method = RequestMethod.GET)
-	public String createUser() {
-		User userTest = new User();
-		userTest.setUser_ID("001");
-		userTest.setUser_Name("TRANTOAN");
-		userTest.setUser_Password("1234");
-		userService.insertUser(userTest);
-		return "login";
+	public ModelAndView login() {
+		return new ModelAndView("login", "user", new User()) ;
+	}
+	@RequestMapping(value ="/create", method = RequestMethod.POST)
+	public String createUser(@ModelAttribute("user") User user) {
+		userService.insertUser(user);
+		System.out.println("Đã insert");
+		return "home";
 	}
 }

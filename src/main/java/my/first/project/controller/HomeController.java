@@ -6,14 +6,9 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 @Controller
 public class HomeController {
- 
-	@RequestMapping(value ="/login", method = RequestMethod.GET)
-	public String login() {
-		return "login";
-	}
-	@RequestMapping(value="/ngu_stupid", method = RequestMethod.GET)
+
+	@RequestMapping(value="/home", method = RequestMethod.GET)
 	public String showLogin() {
-		
 		return "home";
 	}
 
