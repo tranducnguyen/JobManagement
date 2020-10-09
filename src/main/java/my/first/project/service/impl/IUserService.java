@@ -38,4 +38,15 @@ public class IUserService implements UserService {
 		
 	}
 
+	@Override
+	public User loginUser(User user) {
+		List<User> usercheck = userDao.getUserByName(user.getUser_Name());
+		for (User user2 : usercheck) {
+			if (user2.getUser_Password().compareTo(user.getUser_Password())==0) {
+				return user2;
+			}
+		}
+		return null;
+	}
+
 }

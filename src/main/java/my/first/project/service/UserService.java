@@ -9,4 +9,5 @@ public interface UserService {
 	List<User> getAllUser();
 	void getUserById(String userID);
 	void unactiveUser(User user);
+	User loginUser(User user);
 }

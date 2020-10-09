@@ -8,7 +8,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<form:form action="/create" method="POST" modelAttribute="user">
+	<form:form action="" method="POST" modelAttribute="user">
 		<h1>Đăng nhập vào website</h1>
 		<div class="input-box">
 			<i></i> <form:input path="user_Name" type="text" placeholder="Nhập username"/>
@@ -17,7 +17,10 @@
 			<i></i> <form:input path="user_Password" type="password" placeholder="Nhập mật khẩu"/>
 		</div>
 		<div class="btn-box">
-			<button type="submit">Đăng nhập</button>
+			<button type="submit" formaction="/login">Đăng nhập</button>
+		</div>
+		<div class="btn-box">
+			<button type="submit" formaction="/create">Tạo tài khoản</button>
 		</div>
 	</form:form>
 </body>

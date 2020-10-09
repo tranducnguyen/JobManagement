@@ -1,5 +1,6 @@
 package my.first.project.controller;
 
+import org.hamcrest.core.Is;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -13,16 +14,35 @@ import my.first.project.service.UserService;
 @Controller
 public class UserController {
 	@Autowired
-	UserService userService;	
-	
-	@RequestMapping(value ="/create", method = RequestMethod.GET)
-	public ModelAndView login() {
-		return new ModelAndView("login", "user", new User()) ;
+	UserService userService;
+
+	@RequestMapping(value = "/create", method = RequestMethod.GET)
+	public ModelAndView create() {
+		return new ModelAndView("login", "user", new User());
 	}
-	@RequestMapping(value ="/create", method = RequestMethod.POST)
+
+	@RequestMapping(value = "/create", method = RequestMethod.POST)
 	public String createUser(@ModelAttribute("user") User user) {
 		userService.insertUser(user);
 		System.out.println("Đã insert");
 		return "home";
+	}
+
+	@RequestMapping(value = "/login", method = RequestMethod.GET)
+	public ModelAndView login() {
+		return new ModelAndView("login", "user", new User());
+	}
+
+	@RequestMapping(value = "/login", method = RequestMethod.POST)
+	public ModelAndView loginData(@ModelAttribute("user") User user) {
+		User usercheck = userService.loginUser(user);
+		ModelAndView model = new ModelAndView("home");
+
+		if (usercheck != null) {
+			model.addObject("status", user.getUser_Name() + " đăng nhập thành công");
+		} else {
+			model.addObject("status", "đăng nhập thất bại");
+		}
+		return model;
 	}
 }

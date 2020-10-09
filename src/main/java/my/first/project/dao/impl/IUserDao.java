@@ -1,4 +1,5 @@
 package my.first.project.dao.impl;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
@@ -57,6 +58,24 @@ public class IUserDao extends JdbcDaoSupport implements UserDao {
 	@Override
 	public User deleteUserbyId(String user_id, String user_pass) {
 		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public List<User> getUserByName(String user_name) {
+		String sql = "SELECT * FROM USERS WHERE USER_NAME = '"+ user_name +"'";
+		List<Map<String, Object>> rows = getJdbcTemplate().queryForList(sql);
+
+		if (rows.size()>0) {
+			List<User> listUser = new ArrayList<User>();
+			for (Map<String, Object> row : rows) {
+				User user = new User();
+				user.setUser_Name((String)row.get("USER_NAME"));
+				user.setUser_Password((String)row.get("USER_PASSWORD"));
+				listUser.add(user);
+				return listUser;
+			}
+		}
 		return null;
 	}
 

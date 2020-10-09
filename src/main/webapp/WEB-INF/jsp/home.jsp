@@ -7,6 +7,6 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<h1>Login thành công</h1>
+	<h1>${status}</h1>
 </body>
 </html>
