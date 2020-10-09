@@ -2,43 +2,44 @@ package my.first.project.model;
 
 public class Job {
 	// ID
-	private String JOB_ID;
+	private String job_id;
 	// Name
-	private String JOB_NM;
+	private String job_nm;
 	// Mô tả
-	private String JOB_DS;
+	private String job_ds;
 	// Chi tiết làm gì
-	private String JOB_DT;
+	private String job_dt;
 
-	public String getJOB_ID() {
-		return JOB_ID;
+	public String getJob_id() {
+		return job_id;
 	}
 
-	public void setJOB_ID(String jOB_ID) {
-		JOB_ID = jOB_ID;
+	public void setJob_id(String job_id) {
+		this.job_id = job_id;
 	}
 
-	public String getJOB_NM() {
-		return JOB_NM;
+	public String getJob_nm() {
+		return job_nm;
 	}
 
-	public void setJOB_NM(String jOB_NM) {
-		JOB_NM = jOB_NM;
+	public void setJob_nm(String job_nm) {
+		this.job_nm = job_nm;
 	}
 
-	public String getJOB_DS() {
-		return JOB_DS;
+	public String getJob_ds() {
+		return job_ds;
 	}
 
-	public void setJOB_DS(String jOB_DS) {
-		JOB_DS = jOB_DS;
+	public void setJob_ds(String job_ds) {
+		this.job_ds = job_ds;
 	}
 
-	public String getJOB_DT() {
-		return JOB_DT;
+	public String getJob_dt() {
+		return job_dt;
 	}
 
-	public void setJOB_DT(String jOB_DT) {
-		JOB_DT = jOB_DT;
+	public void setJob_dt(String job_dt) {
+		this.job_dt = job_dt;
 	}
+
 }
