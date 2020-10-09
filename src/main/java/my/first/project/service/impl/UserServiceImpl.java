@@ -5,15 +5,15 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import my.first.project.dao.UserDao;
+import my.first.project.dao.IUserDao;
 import my.first.project.model.User;
-import my.first.project.service.UserService;
+import my.first.project.service.IUserService;
 
 @Service
-public class IUserService implements UserService {
+public class UserServiceImpl implements IUserService {
 
 	@Autowired
-	UserDao userDao;
+	IUserDao userDao;
 	
 	@Override
 	public void insertUser(User user) {

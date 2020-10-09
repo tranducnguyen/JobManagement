@@ -4,7 +4,7 @@ import java.util.List;
 
 import my.first.project.model.User;
 
-public interface UserService {
+public interface IUserService {
 	void insertUser(User user);
 	List<User> getAllUser();
 	void getUserById(String userID);

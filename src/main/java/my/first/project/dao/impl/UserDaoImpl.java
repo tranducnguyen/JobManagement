@@ -9,11 +9,12 @@ import javax.sql.DataSource;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.support.JdbcDaoSupport;
 import org.springframework.stereotype.Repository;
-import my.first.project.dao.UserDao;
+
+import my.first.project.dao.IUserDao;
 import my.first.project.model.User;
 
 @Repository
-public class IUserDao extends JdbcDaoSupport implements UserDao {
+public class UserDaoImpl extends JdbcDaoSupport implements IUserDao {
 	@Autowired
 	DataSource datasource;
 

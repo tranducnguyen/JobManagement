@@ -4,7 +4,7 @@ import java.util.List;
 
 import my.first.project.model.User;
 
-public interface UserDao {
+public interface IUserDao {
 	void insertUser(User user);
 	User getUserbyId(String user_id, String user_pass);
 	User updateUserbyId(String user_id, String user_pass);
