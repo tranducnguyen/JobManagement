@@ -23,7 +23,7 @@ public class UserController {
 	public String createUser(@ModelAttribute("user") User user) {
 		userService.insertUser(user);
 		System.out.println("Đã insert");
-		return "home";
+		return "status";
 	}
 
 	@RequestMapping(value = "/login", method = RequestMethod.GET)
@@ -34,7 +34,7 @@ public class UserController {
 	@RequestMapping(value = "/login", method = RequestMethod.POST)
 	public ModelAndView loginData(@ModelAttribute("user") User user) {
 		User usercheck = userService.loginUser(user);
-		ModelAndView model = new ModelAndView("home");
+		ModelAndView model = new ModelAndView("status");
 
 		if (usercheck != null) {
 			model.addObject("status", user.getUser_Name() + " đăng nhập thành công");

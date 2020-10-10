@@ -1,6 +1,7 @@
 package my.first.project.dao.impl;
 
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.jdbc.core.support.JdbcDaoSupport;
 import org.springframework.stereotype.Repository;
@@ -13,8 +14,24 @@ public class JobDaoImpl extends JdbcDaoSupport implements IJobDao{
 
 	@Override
 	public void insertJob(Job job) {
+		String jobID = createJobID();
+		String sql = "INSERT INTO JOBS " + "(JOB_ID,JOB_NM,JOB_DS,JOB_DT) VALUES (?, ?, ?,?)";
+		getJdbcTemplate().update(sql, new Object[] { jobID, job.getJob_nm(), job.getJob_ds(),job.getJob_dt() });
 		// TODO Auto-generated method stub
 		
+	}
+	private String createJobID() {
+		String sql ="SELECT COUNT(USER_ID)+1 AS SL FROM USERS";
+		String so;
+		String kq="";
+		List<Map<String, Object>> sl = getJdbcTemplate().queryForList(sql);
+		for (Map<String, Object> map : sl) {
+			so = map.get("SL").toString();
+			kq ="USER"+ "000".substring(0, 3-so.length())+so;
+			break;
+		}
+
+		return kq;
 	}
 
 	@Override
