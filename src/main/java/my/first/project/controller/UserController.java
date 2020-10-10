@@ -1,6 +1,5 @@
 package my.first.project.controller;
 
-import org.hamcrest.core.Is;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -9,12 +8,11 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 import my.first.project.model.User;
-import my.first.project.service.UserService;
-
+import my.first.project.service.IUserService;
 @Controller
 public class UserController {
 	@Autowired
-	UserService userService;
+	IUserService userService;
 
 	@RequestMapping(value = "/create", method = RequestMethod.GET)
 	public ModelAndView create() {
