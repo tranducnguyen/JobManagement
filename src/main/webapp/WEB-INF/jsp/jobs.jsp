@@ -21,7 +21,7 @@
 			<i></i> <form:input path="job_dt" type="text" placeholder="Job details"/>
 		</div>
 		<div class="btn-box">
-			<button type="submit" formaction="/createJob">Tạo job mới</button>
+			<button type="submit" formaction="/createjob">Tạo job mới</button>
 		</div>
 	</form:form>
 </body>

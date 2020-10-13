@@ -14,13 +14,13 @@ public class UserController {
 	@Autowired
 	IUserService userService;
 
-	@RequestMapping(value = "/create", method = RequestMethod.GET)
-	public ModelAndView create() {
+	@RequestMapping(value = "/createuser", method = RequestMethod.GET)
+	public ModelAndView createUserGet() {
 		return new ModelAndView("login", "user", new User());
 	}
 
-	@RequestMapping(value = "/create", method = RequestMethod.POST)
-	public String createUser(@ModelAttribute("user") User user) {
+	@RequestMapping(value = "/createuser", method = RequestMethod.POST)
+	public String createUserPost(@ModelAttribute("user") User user) {
 		userService.insertUser(user);
 		System.out.println("Đã insert");
 		return "status";

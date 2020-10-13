@@ -3,6 +3,10 @@ package my.first.project.dao.impl;
 import java.util.List;
 import java.util.Map;
 
+import javax.annotation.PostConstruct;
+import javax.sql.DataSource;
+
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.support.JdbcDaoSupport;
 import org.springframework.stereotype.Repository;
 
@@ -11,7 +15,14 @@ import my.first.project.model.Job;
 
 @Repository
 public class JobDaoImpl extends JdbcDaoSupport implements IJobDao{
-
+	@Autowired
+	DataSource datasource;
+	
+	@PostConstruct
+	private void initialize() {
+		setDataSource(datasource);
+	}
+	
 	@Override
 	public void insertJob(Job job) {
 		String jobID = createJobID();
@@ -27,7 +38,7 @@ public class JobDaoImpl extends JdbcDaoSupport implements IJobDao{
 		List<Map<String, Object>> sl = getJdbcTemplate().queryForList(sql);
 		for (Map<String, Object> map : sl) {
 			so = map.get("SL").toString();
-			kq ="USER"+ "000".substring(0, 3-so.length())+so;
+			kq ="JOB"+ "000".substring(0, 3-so.length())+so;
 			break;
 		}
 
