@@ -10,6 +10,7 @@
 <body>
 	<form:form action="" method="POST" modelAttribute="user">
 		<h1>Đăng nhập vào website</h1>
+		<h4>${note}</h4>
 		<div class="input-box">
 			<i></i> <form:input path="user_Name" type="text" placeholder="Nhập username"/>
 		</div>
@@ -22,6 +23,7 @@
 		<div class="btn-box">
 			<button type="submit" formaction="/create">Tạo tài khoản</button>
 		</div>
+		
 	</form:form>
 </body>
 </html>

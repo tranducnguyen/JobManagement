@@ -10,6 +10,5 @@ public interface IJobService {
 	void updateJob(Job job);
 	void deleteJob(Job job);
 	List<Job> getJobsByUser(User user);
-	void assignRoleByUser ();
 	void insertListJobs(List<Job> jobs);
 }

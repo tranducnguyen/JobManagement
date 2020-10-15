@@ -1,5 +1,7 @@
 package my.first.project.controller;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -18,11 +20,13 @@ public class JobController {
 	@RequestMapping(value="/createjob", method = RequestMethod.GET)
 	public ModelAndView createJobGet () {
 		return new ModelAndView("jobs", "job", new Job());
+		
 	}
 	
 	@RequestMapping(value="/createjob", method = RequestMethod.POST)
-	public ModelAndView createJobPost (@ModelAttribute("job") Job job) {
+	public ModelAndView createJobPost (@ModelAttribute("job") Job job, HttpSession session) {
 		jobservice.insertJob(job);
+		
 		ModelAndView model = new ModelAndView("status");
 		model.addObject("status", "Đã tạo job mới");
 		return model;
