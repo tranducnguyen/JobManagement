@@ -17,36 +17,44 @@ public class UserController {
 	@Autowired
 	IUserService userService;
 
-	@RequestMapping(value = "/createuser", method = RequestMethod.GET)
+	@RequestMapping(value = "/controller/page-register", method = RequestMethod.GET)
 	public ModelAndView createUserGet() {
-		return new ModelAndView("login", "user", new User());
+		return new ModelAndView("page-register", "user", new User());
 	}
 
 	@RequestMapping(value = "/createuser", method = RequestMethod.POST)
 	public String createUserPost(@ModelAttribute("user") User user) {
 		userService.insertUser(user);
-		System.out.println("Đã insert");
-		return "status";
+		return "index";
 	}
 
-	@RequestMapping(value = "/login", method = RequestMethod.GET)
+	@RequestMapping(value = "/page-login", method = RequestMethod.GET)
 	public ModelAndView login() {
-		return new ModelAndView("login", "user", new User());
+		return new ModelAndView("page-login", "user", new User());
 	}
 
-	@RequestMapping(value = "/login", method = RequestMethod.POST)
+	@RequestMapping(value = "/page-login", method = RequestMethod.POST)
 	public ModelAndView loginData(@ModelAttribute("user") User user, HttpSession session) {
 		User usercheck = userService.loginUser(user);
-		ModelAndView model = new ModelAndView("status");
-
 		if (usercheck != null) {
-			model.addObject("status", user.getUser_Name() + " đăng nhập thành công");
+			ModelAndView model = new ModelAndView("index");
+			model.addObject("user", usercheck);
 			session.setAttribute("userName", usercheck.getUser_Name());
 			session.setAttribute("password", usercheck.getUser_Password());
 			session.setAttribute("user_ID", usercheck.getUser_ID());
+			return model;
 		} else {
-			model.addObject("status", "đăng nhập thất bại");
+			ModelAndView model = new ModelAndView("page-login");
+			model.addObject("note", "đăng nhập thất bại, vui lòng nhập lại mật khẩu");
+			return model;
 		}
-		return model;
 	}
+	
+//	Logout trả về trang login
+	@RequestMapping(value = "/controller/logout", method = RequestMethod.GET)
+	public ModelAndView logoutUser(HttpSession session) {	
+		session.removeAttribute("userName");
+		return new ModelAndView("page-login", "user", new User());
+	}
+	
 }

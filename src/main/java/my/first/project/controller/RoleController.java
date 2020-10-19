@@ -2,12 +2,15 @@ package my.first.project.controller;
 
 import javax.servlet.http.HttpSession;
 
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
+
+
 
 import my.first.project.model.Role;
 import my.first.project.service.IRoleService;
@@ -19,14 +22,20 @@ public class RoleController {
 	
 	@RequestMapping(value ="/createRole", method = RequestMethod.GET)
 	public ModelAndView createRole_GET() {
+	
 			return new ModelAndView("roles", "role", new Role());
 	}
 	
 	@RequestMapping(value ="/createRole", method = RequestMethod.POST)
 	public ModelAndView createRole_POST(@ModelAttribute("role") Role role, HttpSession session) {
-//		if (session.) {
-//			
-//		}
+//		System.out.println(session.getAttribute("user_ID"));
+//		System.out.println(session);
+		if (session.getAttribute("userName") == null) {
+			ModelAndView model = new ModelAndView("login");
+			model.addObject("note", "Vui lòng đăng nhập để thực hiện các bước tiếp theo");
+			return model;
+		}
+		
 		if (session.getAttribute("user_ID").toString().compareTo("USER001")==0 ) {
 			roleService.insertRole(role);
 			return new ModelAndView("status", "status", "Đã tạo xong");

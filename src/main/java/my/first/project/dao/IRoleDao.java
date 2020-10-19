@@ -1,6 +1,5 @@
 package my.first.project.dao;
 
-import java.util.List;
 
 import my.first.project.model.Role;
 import my.first.project.model.User;

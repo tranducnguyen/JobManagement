@@ -1,4 +1,6 @@
 package my.first.project.dao.impl;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -25,9 +27,11 @@ public class UserDaoImpl extends JdbcDaoSupport implements IUserDao {
 	
 	@Override
 	public void insertUser(User user) {
+		DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+		LocalDateTime now = LocalDateTime.now();
 		String x = createUserID();
-		String sql = "INSERT INTO USERS " + "(USER_ID,USER_PASSWORD,USER_NAME,ACTIVE) VALUES (?, ?, ?,?)";
-		getJdbcTemplate().update(sql, new Object[] { x, user.getUser_Password(), user.getUser_Name(),"1" });	
+		String sql = "INSERT INTO USERS " + "(USER_ID,USER_PASSWORD,USER_NAME,ACTIVE, CRE_DATE) VALUES (?, ?, ?,?,?)";
+		getJdbcTemplate().update(sql, new Object[] { x, user.getUser_Password(), user.getUser_Name(),"1", dtf.format(now)});	
 	}
 
 	private String createUserID() {

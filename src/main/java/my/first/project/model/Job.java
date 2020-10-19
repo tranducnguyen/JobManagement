@@ -9,6 +9,10 @@ public class Job {
 	private String job_ds;
 	// Chi tiết làm gì
 	private String job_dt;
+	
+	private String job_status;
+
+	private Integer no_phase;
 
 	public String getJob_id() {
 		return job_id;
@@ -40,6 +44,22 @@ public class Job {
 
 	public void setJob_dt(String job_dt) {
 		this.job_dt = job_dt;
+	}
+
+	public Integer getNo_phase() {
+		return no_phase;
+	}
+
+	public void setNo_phase(Integer no_phase) {
+		this.no_phase = no_phase;
+	}
+
+	public String getJob_status() {
+		return job_status;
+	}
+
+	public void setJob_status(String job_status) {
+		this.job_status = job_status;
 	}
 
 }
