@@ -830,8 +830,8 @@
 												<td><label class="form-label"> <strong>Number
 															phase</strong>
 												</label></td>
-												<td><form:input path="no_phase" type="text"
-														placeholder="number" /></td>
+												<td><form:input  id="product" path="no_phase" type="text"
+														placeholder="number" oninput="createPhase()"/></td>
 											</tr>
 											<form:button>
 												<div class="btn-box">
@@ -840,7 +840,9 @@
 												</div>
 											</form:button>
 										</form:form>
-
+										<div id="form-phase">
+											
+										</div>
 
 
 									</table>
@@ -871,7 +873,7 @@
 												<th><strong>JOB DESCRIPTION</strong></th>
 												<th><strong>JOB DETAILS</strong></th>
 												<th><strong>NUMBER OF PHASE</strong></th>
-												<th><strong>STATUS</strong></th>
+												<th><strong>STATUS</strong></th>	
 											</tr>
 										</thead>
 										<tbody>
@@ -949,20 +951,20 @@
         Scripts
     ***********************************-->
 	<!-- Required vendors -->
-	<script src="./vendor/global/global.min.js"></script>
-	<script src="./vendor/bootstrap-select/dist/js/bootstrap-select.min.js"></script>
-	<script src="./vendor/chart.js/Chart.bundle.min.js"></script>
-	<script src="./js/custom.min.js"></script>
-	<script src="./js/deznav-init.js"></script>
+	<script src="${pagecontext.request.contextpath}/vendor/global/global.min.js"></script>
+	<script src="${pagecontext.request.contextpath}/vendor/bootstrap-select/dist/js/bootstrap-select.min.js"></script>
+	<script src="${pagecontext.request.contextpath}/vendor/chart.js/Chart.bundle.min.js"></script>
+	<script src="${pagecontext.request.contextpath}/js/custom.min.js"></script>
+	<script src="${pagecontext.request.contextpath}/js/deznav-init.js"></script>
 	<!-- Apex Chart -->
-	<script src="./vendor/apexchart/apexchart.js"></script>
+	<script src="${pagecontext.request.contextpath}/vendor/apexchart/apexchart.js"></script>
 
-	<script src="./js/form-jobassign.js"></script>
+	<script src="${pagecontext.request.contextpath}/js/form-jobphase.js"></script>
 
 
 	<!-- Svganimation scripts -->
-	<script src="./vendor/svganimation/vivus.min.js"></script>
-	<script src="./vendor/svganimation/svg.animation.js"></script>
+	<script src="${pagecontext.request.contextpath}/vendor/svganimation/vivus.min.js"></script>
+	<script src="${pagecontext.request.contextpath}/vendor/svganimation/svg.animation.js"></script>
 
 </body>
 

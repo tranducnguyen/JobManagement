@@ -5,18 +5,18 @@ import java.util.List;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
+
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 
 import my.first.project.model.Job;
 import my.first.project.service.IJobService;
 
-@Controller
+@RestController
 public class JobController {
 	@Autowired
 	IJobService jobservice;
@@ -46,7 +46,8 @@ public class JobController {
 		model.addObject("status", "Đã tạo job mới thành công");
 		return model;
 	}
-	@RequestMapping(value="/editJob/{id}", method = RequestMethod.POST)
+	
+	@RequestMapping(value="/editJob/{id}", method = RequestMethod.GET)
 	public ModelAndView editJob(@PathVariable("id") String id, HttpSession session) {
 		if (session.getAttribute("userName") != null) {
 			ModelAndView model = new ModelAndView("job-profile");

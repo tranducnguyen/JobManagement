@@ -7,7 +7,6 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 public class ManagementJob {
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
 		SpringApplication.run(ManagementJob.class, args);
 	}
 
